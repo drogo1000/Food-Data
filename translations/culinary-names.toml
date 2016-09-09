@@ -1,0 +1,25 @@
+[pork] # https://en.wikipedia.org/wiki/Pork
+  [pork.en]
+    term = "pork"
+  [pork.fr]
+    term = "viande de porc"
+
+[spring-onion] # https://en.wikipedia.org/wiki/Scallion
+  [spring-onion.en]
+    term = "spring onion"
+    [spring-onion.en.AU]
+      term = "shallot"
+    [spring-onion.en.US]
+      term = "scallion"
+    [spring-onion.en.CA]
+      term = "green onion"
+    [spring-onion.en.GB.WLS]
+        term = "gibbon"
+  [spring-onion.fr]
+    term = "ciboule"
+
+[potato] # https://en.wikipedia.org/wiki/Potato
+  [potato.en]
+    term = "potato"
+  [potato.fr]
+    term = "pomme de terre"

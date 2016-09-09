@@ -1,0 +1,17 @@
+[meat] # https://en.wikipedia.org/wiki/Meat
+  [meat.en]
+    term = "meat"
+  [meat.fr]
+    term = "viande"
+
+[poultry] # https://en.wikipedia.org/wiki/Poultry
+  [poultry.en]
+    term = "poultry"
+  [poultry.fr]
+    term = "volaille"
+
+[vegetable] # https://en.wikipedia.org/wiki/Vegetable#Terminology (Culinary Vegetable)
+  [vegetable.en]
+    term = "vegetable"
+  [vegetable.fr]
+    term = "légume"
