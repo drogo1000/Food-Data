@@ -15,3 +15,7 @@
     term = "vegetable"
   [vegetable.fr]
     term = "légume"
+
+[tuber] # https://en.wikipedia.org/wiki/Tubers
+  [tuber.en]
+    term = "tuber"
