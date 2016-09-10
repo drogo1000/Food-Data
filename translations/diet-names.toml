@@ -1,0 +1,56 @@
+# Includes diets and religious dietary requirements
+# https://en.wikipedia.org/wiki/Diet_(nutrition)#Diet_classification_table
+
+[carnivorous] # https://en.wikipedia.org/wiki/Carnivorous
+  [carnivorous.en]
+    term = "carnivorous"
+
+[ketogenic] # https://en.wikipedia.org/wiki/Ketogenic_diet
+  [ketogenic.en]
+    term = "ketogenic"
+
+[omnivorous] # https://en.wikipedia.org/wiki/Omnivorous
+  [omnivorous.en]
+    term = "omnivorous"
+
+[pescetarian] # https://en.wikipedia.org/wiki/Pescetarian
+  [pescetarian.en]
+    term = "pescetarian"
+
+[ovo-lacto-vegetarian] # https://en.wikipedia.org/wiki/Lacto-ovo_vegetarian
+  [ovo-lacto-vegetarian.en]
+    term = "ovo-lacto-vegetarian"
+
+[lacto-vegetarian] # https://en.wikipedia.org/wiki/Lacto-ovo_vegetarian (excluding eggs)
+  [lacto-vegetarian.en]
+    term = "lacto-vegetarian"
+
+[vegetarian] # https://en.wikipedia.org/wiki/Vegetarianism
+  [vegetarian.en]
+    term = "vegetarian"
+
+[vegan] # https://en.wikipedia.org/wiki/Veganism
+  [vegan.en]
+    term = "vegan"
+
+[raw-vegan] # https://en.wikipedia.org/wiki/Raw_veganism
+  [raw-vegan.en]
+    term = "raw-vegan"
+
+[halal] # https://en.wikipedia.org/wiki/Halal (Islamic)
+  [halal.en]
+    term = "halal"
+
+# [hindu] # Unsure of correct term https://en.wikipedia.org/wiki/Diet_in_Hinduism
+
+[kosher] # https://en.wikipedia.org/wiki/Kashrut (Jewish)
+  [kosher.en]
+    term = "kosher"
+
+[paleolithic] # https://en.wikipedia.org/wiki/Paleolithic
+  [paleolithic.en]
+    term = "paleolithic"
+
+[fruitarian] # https://en.wikipedia.org/wiki/Fruitarianism
+  [fruitarian.en]
+    term = "fruitarian"
