@@ -1,0 +1,14 @@
+# https://en.wikipedia.org/wiki/Scallion
+[translation]
+  [translation.en]
+    term = "spring onion"
+    [translation.en.AU]
+      term = "shallot"
+    [translation.en.US]
+      term = "scallion"
+    [translation.en.CA]
+      term = "green onion"
+    [translation.en.GB.WLS]
+        term = "gibbon"
+  [translation.fr]
+    term = "ciboule"

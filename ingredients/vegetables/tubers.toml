@@ -1,0 +1,6 @@
+# https://en.wikipedia.org/wiki/Tubers
+exclude-diet = ["fruitarian"]
+
+[translation]
+  [translation.en]
+    term = "tuber"

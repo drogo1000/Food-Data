@@ -1,0 +1,8 @@
+# https://en.wikipedia.org/wiki/Meat
+exclude-diet = ["vegan", "vegetarian", "pescetarian", "raw-vegan", "fruitarian"]
+
+[translation]
+  [translation.en]
+    term = "meat"
+  [translation.fr]
+    term = "viande"
