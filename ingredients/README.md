@@ -1,46 +1,54 @@
 Ingredients
 ===========
 
-This directory contains ingredient related data.
+This directory contains ingredient related data. Organised by grouping ingredients to different culinary groups, and associating different data with those.
 
-ingredients.toml
-----------------
+Structure
+---------
 
-This file contains structured ingredient data grouped by the culinary types and names, and miscellaneous details associated with that group or ingredient.
+The data is organised into TOML files per ingredient or ingredient/culinary type. Where attributes specified in parent folders applies to all children in that folder.
 
-The structure of this file is as follows:
+An example of this structure:
 
-The `__info__` field provides miscellaneous details about the current group and child groups. In addition the root `__info__` contains file references to the different keyword lookups (to handle translations).
+```
+ingredients/
+├── meats.toml #contains info that is applied to all meats
+├── meats/
+│   └── pork.toml #contains info that is applied to pork and inherits the attributes applied to meats
+├── vegetables.toml #contains info that is applied to all vegetables
+└── vegetables/
+    ├── spring-onion.toml #contains info that is applied to spring-onion and inherits the attributes applied to vegetables
+    ├── tubers.toml #contains info that is applied to tubers and inherits the attributes applied to vegetables
+    └── tubers/
+        └── potato.toml #contains info that is applied to potato and inherits the attributes applied to vegetables and tubers
+```
 
-The current fields that may be found in an `__info__` table are:
 
-    * __groups__ - The group names.
-    * __names__ - The ingredient names.
-    * __diets__ - The dietary names.
+Data
+----
+
+The TOML file itself contains attributes that should be applied to that ingredient/groups and attributes that should also be applied any child ingredients/groups.
+
+The current list of attributes that are applied to the object itself:
+
+    * __translation__ - The current translations for the given item.
+
+The current list of attributes that are applied to the object and child objects:
     * __exclude-diet__ - The diets that do not allow consumption of this ingredient or type of ingredient. By default all diets are allowed to consume the ingredient unless specifically excluded.
     * __exclude-allergen__ - The allergies that are triggered by consumption of this ingredient or type of ingredient. By default all allergy types are allowed to consume the ingredient unless specifically excluded.
 
-Groups are defined as tables or nested tables that are either a keyword to a culinary type (group), or an ingredient (culinary name).
 
-An example of this is:
+An example of this is (meats.toml):
 
 ```toml
-[__info__]
-  groups = "../translations/culinary-groups.toml"
-  names = "../translations/culinary-names.toml"
-  diets = "../translations/diet-names.toml"
+# https://en.wikipedia.org/wiki/Meat
+exclude-diet = ["vegan", "vegetarian", "pescetarian", "raw-vegan", "fruitarian"]
 
-[vegetable]
-  [vegetable.__info__]
-    exclude-diet = ["carnivorous", "ketogenic"]
-
-  [vegetable.spring-onion]
-
-  [vegetable.tuber]
-    [vegetable.tuber.__info__]
-      exclude-diet = ["fruitarian"]
-
-    [vegetable.tuber.potato]
+[translation]
+  [translation.en]
+    term = "meat"
+  [translation.fr]
+    term = "viande"
 ```
 
-The above indicates a vegetable (culinary-groups.toml) is excluded from the carnivorous and ketogenic diets (diet-names.toml). While the ingredient spring-onion (culinary-names.toml) is a type of vegetable, and inherits all of vegetable's info. And a tuber (culinary-groups.toml) is a type of vegetable, that is also excluded from fruitarian diets (diet-names.toml). Lastly the ingredient potato (culinary-names.toml) belongs to the tuber vegetable type.
+The above indicates that a meat (or `meats`) and any items in that category (in the `meats/` directory) are excluded from vegan, vegetarian, pescetarian, raw-vegan and fruitarian diets. Translations for meat have also been provided in the english and french. For more information on how translations work see: [translations.md](../translations/README.md).
