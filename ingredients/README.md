@@ -31,11 +31,13 @@ The TOML file itself contains attributes that should be applied to that ingredie
 
 The current list of attributes that are applied to the object itself:
 
-    * __translation__ - The current translations for the given item.
+* __translation__ - The current translations for the given item.
 
 The current list of attributes that are applied to the object and child objects:
-    * __exclude-diet__ - The diets that do not allow consumption of this ingredient or type of ingredient. By default all diets are allowed to consume the ingredient unless specifically excluded.
-    * __exclude-allergen__ - The allergies that are triggered by consumption of this ingredient or type of ingredient. By default all allergy types are allowed to consume the ingredient unless specifically excluded.
+
+* __exclude-diet__ - The diets that do not allow consumption of this ingredient or type of ingredient. By default all diets are allowed to consume the ingredient unless specifically excluded.
+
+* __exclude-allergen__ - The allergies that are triggered by consumption of this ingredient or type of ingredient. By default all allergy types are allowed to consume the ingredient unless specifically excluded.
 
 
 An example of this is (meats.toml):
