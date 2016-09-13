@@ -15,7 +15,7 @@ cuisines/
 ├── oceania.toml #contains info that is applied to oceanic regions
 └── oceania/
     └── australasia.toml #contains info that is applied to the australasian region and inherits the attributes applied to oceania
-        └── australia.toml #contains info that is applied to australia and inherist the attributes applied to australiasia
+        └── australia.toml #contains info that is applied to australia and inherits the attributes applied to australasia
 ```
 
 Data
