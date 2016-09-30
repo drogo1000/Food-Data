@@ -1,0 +1,12 @@
+# https://en.wikipedia.org/wiki/Italian_cuisine
+
+[translation]
+  [translation.en]
+    term = "italy"
+    adj = "italian"
+
+
+[cuisine]
+  [cuisine.pizza.translation]
+    [cuisine.pizza.translation.en]
+      term = "pizza"
