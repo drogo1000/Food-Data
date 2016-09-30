@@ -1,0 +1,6 @@
+# https://en.wikipedia.org/wiki/Cuisine#Cuisines_of_the_Americas
+
+[translation]
+  [translation.en] # unsure of correct terminology, this will be confused with US "american cuisine"
+    term = "america"
+    adj = "american"
