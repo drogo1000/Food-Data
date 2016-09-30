@@ -36,7 +36,7 @@ An example of this is (australia.toml):
 
 ```toml
 [cuisine]
-  [lamington.translation.en]
+  [cuisine.lamington.translation.en]
     term = "lamington"
 
 [translation]
