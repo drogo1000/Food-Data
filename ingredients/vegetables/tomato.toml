@@ -1,0 +1,6 @@
+# https://en.wikipedia.org/wiki/Tomato
+[translation]
+  [translation.en]
+    term = "tomato"
+  [translation.fr]
+    term = "tomate"
