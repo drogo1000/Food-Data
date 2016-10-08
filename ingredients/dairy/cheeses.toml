@@ -1,0 +1,6 @@
+# https://en.wikipedia.org/wiki/Cheese
+[translation]
+  [translation.en]
+    term = "cheese"
+  [translation.fr]
+    term = "fromage"
