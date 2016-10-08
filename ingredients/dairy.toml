@@ -1,0 +1,8 @@
+# https://en.wikipedia.org/wiki/Dairy
+exclude-diet = ["carnivorous", "vegetarian", "vegan", "raw-vegan", "paleolithic", "fruitarian"]
+
+[translation]
+  [translation.en]
+    term = "dairy"
+  [translation.fr]
+    term = "produits laitiers"
