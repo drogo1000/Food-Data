@@ -14,3 +14,8 @@ Contains the cuisine related data, such as grouping cuisines by region with loca
 
 ### [/ingredients](/ingredients)
 Contains the ingredient related data, such as grouping ingredients to types with localised ingredient and type names.
+
+
+## Guidelines
+
+* __Naming__ - All filenames, attributes, and values should be in lower case. Filenames should contain only letters and hyphens. Attributes should only contain letters, numbers, and hyphens.
