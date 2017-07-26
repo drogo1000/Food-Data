@@ -1,6 +1,8 @@
 # https://en.wikipedia.org/wiki/List_of_African_cuisines#West_African_cuisine
 # https://en.wikipedia.org/wiki/African_cuisine#West_Africa
 
+type = "subregion"
+
 [translation]
   [translation.en]
     term = "west africa"

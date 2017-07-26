@@ -1,6 +1,8 @@
 # https://en.wikipedia.org/wiki/Cuisine#African_cuisine
 # https://en.wikipedia.org/wiki/List_of_African_cuisines
 
+type = "continent"
+
 [translation]
   [translation.en]
     term = "africa"

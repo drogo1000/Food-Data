@@ -1,5 +1,7 @@
 # https://en.wikipedia.org/wiki/List_of_Asian_cuisines#West_Asian_cuisine
 
+type = "subregion"
+
 [translation]
   [translation.en]
     term = "west asia"

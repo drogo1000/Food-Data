@@ -10,7 +10,7 @@ Contains the different translation files.
 
 
 ### [/cuisines](/cuisines)
-Contains the cuisine related data, such as grouping cuisines by region with localised cuisine and region names.
+Contains the cuisine related data, such as grouping cuisines by style with localised cuisine and style names.
 
 
 ### [/ingredients](/ingredients)

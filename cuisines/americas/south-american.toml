@@ -1,5 +1,7 @@
 # https://en.wikipedia.org/wiki/List_of_cuisines_of_the_Americas#South_American_cuisine
 
+type = "subregion"
+
 [translation]
   [translation.en]
     term = "south america"

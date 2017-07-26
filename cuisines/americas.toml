@@ -1,6 +1,8 @@
 # https://en.wikipedia.org/wiki/Cuisine#Cuisines_of_the_Americas
 # https://en.wikipedia.org/wiki/List_of_cuisines_of_the_Americas
 
+type = "continent"
+
 [translation]
   [translation.en] # unsure of correct terminology, this will be confused with US "american cuisine"
     term = "america"

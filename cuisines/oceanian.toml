@@ -1,6 +1,8 @@
 # https://en.wikipedia.org/wiki/Cuisine#Oceanian_cuisine
 # https://en.wikipedia.org/wiki/Oceanic_cuisine
 
+type = "continent"
+
 [translation]
   [translation.en]
     term = "oceania"

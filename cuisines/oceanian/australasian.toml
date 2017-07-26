@@ -2,6 +2,8 @@
 # https://en.wikipedia.org/wiki/Oceania
 # https://en.wikipedia.org/wiki/Australasia
 
+type = "subregion"
+
 [translation]
   [translation.en]
     term = "australasia"
