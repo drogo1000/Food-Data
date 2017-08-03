@@ -26,4 +26,4 @@ An example of this is (peanut.toml):
     term = "peanut allergy"
 ```
 
-The above provides the translations for a peanut allergy. For more information on how translations work see: [translations.md](../translations/README.md).
+The above provides the translations for a peanut allergy. For more information on how translations work see: [translations.md](../translations.md).

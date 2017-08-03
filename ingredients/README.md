@@ -53,4 +53,4 @@ exclude-diet = ["vegan", "vegetarian", "pescetarian", "raw-vegan", "fruitarian"]
     term = "viande"
 ```
 
-The above indicates that a meat (or `meats`) and any items in that category (in the `meats/` directory) are excluded from vegan, vegetarian, pescetarian, raw-vegan and fruitarian diets. Translations for meat have also been provided in the english and french. For more information on how translations work see: [translations.md](../translations/README.md).
+The above indicates that a meat (or `meats`) and any items in that category (in the `meats/` directory) are excluded from vegan, vegetarian, pescetarian, raw-vegan and fruitarian diets. Translations for meat have also been provided in the english and french. For more information on how translations work see: [translations.md](../translations.md).

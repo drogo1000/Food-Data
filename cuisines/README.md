@@ -49,4 +49,4 @@ type = "country"
     adj = "australian"
 ```
 
-The above indicates in the country Australia and any styles inside it (in the `australia/` directory), the cuisine `lamington` is available. For more information on how translations work see: [translations.md](../translations/README.md).
+The above indicates in the country Australia and any styles inside it (in the `australia/` directory), the cuisine `lamington` is available. For more information on how translations work see: [translations.md](../translations.md).
