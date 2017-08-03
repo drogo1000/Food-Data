@@ -1,0 +1,5 @@
+# https://en.wikipedia.org/wiki/Wheat_allergy
+
+[wheat]
+  [wheat.en]
+    term = "wheat allergy"

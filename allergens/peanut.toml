@@ -1,0 +1,5 @@
+# https://en.wikipedia.org/wiki/Peanut_allergy
+
+[peanut]
+  [peanut.en]
+    term = "peanut allergy"
