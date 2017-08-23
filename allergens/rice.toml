@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Rice_allergy
 
-[rice]
-  [rice.en]
+[translation]
+  [translation.en]
     term = "rice allergy"

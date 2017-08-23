@@ -21,8 +21,8 @@ An example of this is (peanut.toml):
 ```toml
 # https://en.wikipedia.org/wiki/Peanut_allergy
 
-[peanut]
-  [peanut.en]
+[translation]
+  [translation.en]
     term = "peanut allergy"
 ```
 

@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Gluten
 
-[gluten]
-  [gluten.en]
+[translation]
+  [translation.en]
     term = "gluten allergy"

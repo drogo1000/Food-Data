@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Garlic_allergy
 
-[garlic]
-  [garlic.en]
+[translation]
+  [translation.en]
     term = "garlic allergy"

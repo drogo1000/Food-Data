@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Seafood_allergy
 
-[seafood]
-  [seafood.en]
+[translation]
+  [translation.en]
     term = "seafood allergy"

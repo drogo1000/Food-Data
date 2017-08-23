@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Egg_allergy
 
-[egg]
-  [egg.en]
+[translation]
+  [translation.en]
     term = "egg allergy"

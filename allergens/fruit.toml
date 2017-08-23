@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Fruit_allergy
 
-[fruit]
-  [fruit.en]
+[translation]
+  [translation.en]
     term = "fruit allergy"

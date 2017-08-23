@@ -1,5 +1,5 @@
 # https://en.wikipedia.org/wiki/Soy_allergy
 
-[soy]
-  [soy.en]
+[translation]
+  [translation.en]
     term = "soy allergy"
