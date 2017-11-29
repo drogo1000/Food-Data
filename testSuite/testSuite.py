@@ -23,10 +23,9 @@ def validAttribute(attribute):
 # A valid value should only contain lowercase letters (any
 # characters in different languages)
 def validValue(value):
-    # Todo: match characters in different languages
-    result = re.findall('[/.]', value)
-    if not len(result) == 0:
-        raise configError('invalid value')
+    for character in value:
+        if character.isupper():
+            raise configError('invalid value')
 
 
 # Traverse a dictionary parsed from a .toml file with many

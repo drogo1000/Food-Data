@@ -3,6 +3,7 @@ Test Suite
 
 This directory contains a Python program checking validity of this project. It will exam that the directory layout and data is structured and formatted correctly, naming conventions are followed, no redundant duplicate data, all required fields are supplied.
 
+
 Usage
 -----
 This program accept one optional argument specifying the directory. If the argument is not provided, it will check all directory ```../allergens``` ```../cuisines``` ```../diets``` ```../ingredients```.
@@ -13,6 +14,14 @@ __Example:__
 $ python3 testSuites.py
 $ python3 testSuites.py ../allergens
 ```
+
+
+Dependences
+-----------
+[__TOML 0.9.3__](https://github.com/uiri/toml)
+
+A Python library for parsing and creating TOML.
+
 
 General Test Cases
 ------------------
@@ -32,6 +41,7 @@ Ingredients Test Cases
 ----------------------
 * The ```exclude-diet``` field should have a list of strings as its value (may be an empty list). These strings should reference the filenames of diets that exists in ```diets/```.
 * The ```exclude-allergens``` field should have a list of strings as its value (may be an empty list). These strings should reference the filenames of allergens that exists in ```allergens/```.
+
 
 Cuisines Test Cases
 -------------------
