@@ -8,9 +8,7 @@ from pathlib import Path
 def validFilename(filename):
     result = re.findall('[^a-z\-\.]', filename)
     if not len(result) == 0:
-        # Test:
-        print(key)
-        raise ValueError()
+        raise ValueError('invalid filename')
 
 
 # A valid attribute should only contain lowercase letters,
@@ -18,7 +16,7 @@ def validFilename(filename):
 def validAttribute(attribute):
     result = re.findall('[^a-z1-9\-]', attribute)
     if not len(result) == 0:
-        raise ValueError()
+        raise ValueError('invalid attribute')
 
 
 # A valid value should only contain lowercase letters (any
@@ -26,7 +24,9 @@ def validAttribute(attribute):
 def validValue(value):
     result = re.findall('[^a-z]', value)
     if not len(result) == 0:
-        raise ValueError()
+        # raise ValueError()
+        # Tests:
+        print("not valid: ",value)
 
 
 # Traverse a dictionary parsed from a .toml file with many
@@ -35,15 +35,30 @@ def validValue(value):
 def traverseDictionary(element):
     if type(element) == str:
         # Test:
-        # validValue(element)
         print(element)
+        validValue(element)
     elif type(element) == dict:
-        for key in element.keys():
+        # traverse items
+        for item in element.items():
+            key = item[0]
+            value = item[1]
             # Test:
-            # validAttribute(key)
             print(key)
-        for value in element.values():
-            traverseDic(value)
+            validAttribute(key)
+
+            # apply different validation rules based on key
+            if key == 'translation':
+                validTranslation(value, 1)
+            elif key == 'exclude-diet':
+                validExDiet(value)
+            elif key == 'exclude-allergens':
+                validExAllergens(value)
+            elif key == 'type':
+                validCuisineType(value)
+            elif key == 'cuisine':
+                validCuisine(value)
+            else:
+                traverseDictionary(value)
 
 
 # A vaild translation dictionary can have three levels:
@@ -53,26 +68,10 @@ def traverseDictionary(element):
 def validTranslation(dictionary, level):
     # verify data type of argument
     if not type(dictionary) == dict:
-        raise ValueError()
-
-    # the second and third levels are optional.
-    # it could be the value
-    if not level == 1:
-        isValue = False
-        for value in dictionary.values():
-            if type(value) == str:
-                isValue = True
-                # Test:
-                print(value)
-                # validValue(value)
-        if isValue:
-            for key in dictionary.keys():
-                # Test:
-                print(key)
-                # validAttribute(key)
-            return
+        raise ValueError('invalid translation')
 
     # declare naming pattern for certain layer
+    lowest = False
     match = ''
     if level == 1:
         match = '[a-z]{2}'
@@ -80,23 +79,100 @@ def validTranslation(dictionary, level):
         match = '[A-Z]{2}'
     elif level == 3:
         match = '[A-Z]{3}'
+    elif level == 4:
+        lowest = True
     else:
-        raise ValueError()
+        raise ValueError('invalid translation')
 
-    # exam the validation of certain layer
-    for key in dictionary.keys():
-        # Test:
-        print(key)
-        result = re.fullmatch(match, key)
-        if result == None:
-            raise ValueError()
+    if not lowest:
+        for item in dictionary.items():
+            key = item[0]
+            val = item[1]
+            if type(val) == str:
+                # Test:
+                print(val)
+                validValue(val)
+            elif type(val) == dict:
+                result = re.fullmatch(match, key)
+                if result == None:
+                    raise ValueError('invalid translation')
+                validTranslation(val, level + 1)
+    else:
+        for item in dictionary.items():
+            key = item[0]
+            val = item[1]
+            if type(val) == str:
+                # Test:
+                print(val)
+                validValue(val)
+                validAttribute(key)
+            else:
+                raise ValueError('invalid translation')
 
-    # exam the validation of the next layer
-    for value in dictionary.values():
-        if type(value) == dict:
-            validTranslation(value, level + 1)
-        else:
-            raise ValueError()
+
+# The value shoud be one of `"continent", "subregion", "country",
+# "province" or "culture".
+def validCuisineType(value):
+    if type(value) == str:
+        if (value == 'continent'
+        or value == 'subregion'
+        or value == 'country'
+        or value == 'province'
+        or value == 'culture'):
+            return
+    raise ValueError('invalid cuisine type')
+
+
+# should have a list of strings as its value (may be an empty
+# list). These strings should reference the filenames of diets
+# that exists in diets/
+def validExDiet(value):
+    # get the path to diets/
+    path = Path('../diets')
+    # exam the reference
+    if type(value) == list:
+        for ele in value:
+            filename = ele + '.toml'
+            pathToFile = path / filename
+            if not pathToFile.is_file():
+                raise ValueError('invalid exclude-diet')
+    else:
+        raise ValueError('invalid exclude-diet')
+
+
+# should have a list of strings as its value (may be an empty
+# list). These strings should reference the filenames of allergens
+# that exists in allergens/
+def validExAllergens(value):
+    # get the path to diets/
+    path = Path('../allergens')
+    # exam the reference
+    if type(value) == list:
+        for ele in value:
+            filename = ele + '.toml'
+            pathToFile = path / filename
+            if not pathToFile.is_file():
+                raise ValueError('invalid exclude-allergens')
+    else:
+        raise ValueError('invalid exclude-allergens')
+
+
+# A cuisine attri should be of the format cuisine.<name>.translation,
+# where name is a custom name.
+def validCuisine(value):
+    if type(value) == dict:
+        for item in value.items():
+            key = item[0]
+            val = item[1]
+            validAttribute(key)
+            if (type(val) == dict
+            and len(val.keys()) == 1
+            and 'translation' in val):
+                validTranslation(val['translation'], 1)
+            else:
+                raise ValueError('invalid cusine')
+    else:
+        raise ValueError('invalid cusine')
 
 
 # If a folder exists inside there must be a file with the
@@ -106,8 +182,9 @@ def validDirectory(folder):
     path = Path(folder)
     for child in path.iterdir():
         if child.is_dir() and child.stem[:2] != '__':
-            if not child.with_suffix('.toml').is_file():
-                raise ValueError()
+            filename = child.with_suffix('.toml')
+            if not filename.is_file():
+                raise ValueError('invalid folder')
 
 
 # Parse a .toml file into a dictionary and exam its validation
@@ -128,3 +205,8 @@ def validFile(folder):
         fs.close()
         parsedData = toml.loads(tomlString)
         traverseDictionary(parsedData)
+
+    # traverse sub-folder
+    for child in path.iterdir():
+        if child.is_dir() and child.stem[:2] != '__':
+            validFile(child)
