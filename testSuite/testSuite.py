@@ -1,6 +1,7 @@
 import toml
 import re
 from pathlib import Path
+import sys
 
 
 # A valid filename should only contain lowercase letters
@@ -8,7 +9,7 @@ from pathlib import Path
 def validFilename(filename):
     result = re.findall('[^a-z\-\.]', filename)
     if not len(result) == 0:
-        raise ValueError('invalid filename')
+        raise configError('invalid filename')
 
 
 # A valid attribute should only contain lowercase letters,
@@ -16,17 +17,16 @@ def validFilename(filename):
 def validAttribute(attribute):
     result = re.findall('[^a-z1-9\-]', attribute)
     if not len(result) == 0:
-        raise ValueError('invalid attribute')
+        raise configError('invalid attribute')
 
 
 # A valid value should only contain lowercase letters (any
 # characters in different languages)
 def validValue(value):
-    result = re.findall('[^a-z]', value)
+    # Todo: match characters in different languages
+    result = re.findall('[/.]', value)
     if not len(result) == 0:
-        # raise ValueError()
-        # Tests:
-        print("not valid: ",value)
+        raise configError('invalid value')
 
 
 # Traverse a dictionary parsed from a .toml file with many
@@ -34,16 +34,12 @@ def validValue(value):
 # values on each layer
 def traverseDictionary(element):
     if type(element) == str:
-        # Test:
-        print(element)
         validValue(element)
     elif type(element) == dict:
         # traverse items
         for item in element.items():
             key = item[0]
             value = item[1]
-            # Test:
-            print(key)
             validAttribute(key)
 
             # apply different validation rules based on key
@@ -68,7 +64,7 @@ def traverseDictionary(element):
 def validTranslation(dictionary, level):
     # verify data type of argument
     if not type(dictionary) == dict:
-        raise ValueError('invalid translation')
+        raise configError('invalid translation')
 
     # declare naming pattern for certain layer
     lowest = False
@@ -82,32 +78,28 @@ def validTranslation(dictionary, level):
     elif level == 4:
         lowest = True
     else:
-        raise ValueError('invalid translation')
+        raise configError('invalid translation')
 
     if not lowest:
         for item in dictionary.items():
             key = item[0]
             val = item[1]
             if type(val) == str:
-                # Test:
-                print(val)
                 validValue(val)
             elif type(val) == dict:
                 result = re.fullmatch(match, key)
                 if result == None:
-                    raise ValueError('invalid translation')
+                    raise configError('invalid translation')
                 validTranslation(val, level + 1)
     else:
         for item in dictionary.items():
             key = item[0]
             val = item[1]
             if type(val) == str:
-                # Test:
-                print(val)
                 validValue(val)
                 validAttribute(key)
             else:
-                raise ValueError('invalid translation')
+                raise configError('invalid translation')
 
 
 # The value shoud be one of `"continent", "subregion", "country",
@@ -120,7 +112,7 @@ def validCuisineType(value):
         or value == 'province'
         or value == 'culture'):
             return
-    raise ValueError('invalid cuisine type')
+    raise configError('invalid cuisine type')
 
 
 # should have a list of strings as its value (may be an empty
@@ -135,9 +127,9 @@ def validExDiet(value):
             filename = ele + '.toml'
             pathToFile = path / filename
             if not pathToFile.is_file():
-                raise ValueError('invalid exclude-diet')
+                raise configError('invalid exclude-diet')
     else:
-        raise ValueError('invalid exclude-diet')
+        raise configError('invalid exclude-diet')
 
 
 # should have a list of strings as its value (may be an empty
@@ -152,9 +144,9 @@ def validExAllergens(value):
             filename = ele + '.toml'
             pathToFile = path / filename
             if not pathToFile.is_file():
-                raise ValueError('invalid exclude-allergens')
+                raise configError('invalid exclude-allergens')
     else:
-        raise ValueError('invalid exclude-allergens')
+        raise configError('invalid exclude-allergens')
 
 
 # A cuisine attri should be of the format cuisine.<name>.translation,
@@ -170,9 +162,9 @@ def validCuisine(value):
             and 'translation' in val):
                 validTranslation(val['translation'], 1)
             else:
-                raise ValueError('invalid cusine')
+                raise configError('invalid cusine')
     else:
-        raise ValueError('invalid cusine')
+        raise configError('invalid cusine')
 
 
 # If a folder exists inside there must be a file with the
@@ -184,13 +176,18 @@ def validDirectory(folder):
         if child.is_dir() and child.stem[:2] != '__':
             filename = child.with_suffix('.toml')
             if not filename.is_file():
-                raise ValueError('invalid folder')
+                raise configError('invalid folder')
 
 
 # Parse a .toml file into a dictionary and exam its validation
 def validFile(folder):
     # exam the validation of the folder structure
-    validDirectory(folder)
+    try:
+        validDirectory(folder)
+    except configError as e:
+        print(e.message, 'in\n', folder)
+    except Exception:
+        print('unknown error')
 
     # read .toml in the folder
     path = Path(folder)
@@ -204,9 +201,38 @@ def validFile(folder):
         tomlString = fs.read()
         fs.close()
         parsedData = toml.loads(tomlString)
-        traverseDictionary(parsedData)
+        try:
+            traverseDictionary(parsedData)
+        except configError as e:
+            print(e.message, 'in\n', f)
+        except Exception:
+            print('unknown error')
+
 
     # traverse sub-folder
     for child in path.iterdir():
         if child.is_dir() and child.stem[:2] != '__':
             validFile(child)
+
+# A exception class with a message
+class configError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+
+# entrance function
+def main():
+    if len(sys.argv) == 2:
+        print('Test: ', sys.argv[1])
+        validFile(sys.argv[1])
+    elif len(sys.argv) == 1:
+        print('Test all folders')
+        validFile('../cuisine')
+        validFile('../diets')
+        validFile('../ingredients')
+        validFile('../allergens')
+    else:
+        print('Wrong arguments')
+
+if __name__ == '__main__':
+    main()
