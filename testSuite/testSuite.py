@@ -1,7 +1,14 @@
+# A test suite in Python 3 checking validity of Food-Data
+
 import toml
 import re
 from pathlib import Path
 import sys
+
+
+# main will return 0 if no exception raises
+# main will return -1 if any exception raises
+returnVal = 0
 
 
 # A valid filename should only contain lowercase letters
@@ -46,8 +53,8 @@ def traverseDictionary(element):
                 validTranslation(value, 1)
             elif key == 'exclude-diet':
                 validExDiet(value)
-            elif key == 'exclude-allergens':
-                validExAllergens(value)
+            elif key == 'exclude-allergen':
+                validExAllergen(value)
             elif key == 'type':
                 validCuisineType(value)
             elif key == 'cuisine':
@@ -134,7 +141,7 @@ def validExDiet(value):
 # should have a list of strings as its value (may be an empty
 # list). These strings should reference the filenames of allergens
 # that exists in allergens/
-def validExAllergens(value):
+def validExAllergen(value):
     # get the path to diets/
     path = Path('../allergens')
     # exam the reference
@@ -143,9 +150,9 @@ def validExAllergens(value):
             filename = ele + '.toml'
             pathToFile = path / filename
             if not pathToFile.is_file():
-                raise configError('invalid exclude-allergens')
+                raise configError('invalid exclude-allergen')
     else:
-        raise configError('invalid exclude-allergens')
+        raise configError('invalid exclude-allergen')
 
 
 # A cuisine attri should be of the format cuisine.<name>.translation,
@@ -158,12 +165,19 @@ def validCuisine(value):
             validAttribute(key)
             if (type(val) == dict
             and len(val.keys()) == 1
-            and 'translation' in val):
+            and 'translation' in val.keys()):
                 validTranslation(val['translation'], 1)
             else:
                 raise configError('invalid cusine')
     else:
-        raise configError('invalid cusine')
+        raise configError('invalid cuisine')
+
+
+# A cuisine must have a type attribute
+def cuisineTypeExist(path, dictionary):
+    if ('cuisines' in path.parts
+    and not 'type' in dictionary.keys()):
+        raise configError('invalid cuisines')
 
 
 # If a folder exists inside there must be a file with the
@@ -192,20 +206,23 @@ def validFile(folder):
     path = Path(folder)
     tomlFileList = list(path.glob('*.toml'))
     for f in tomlFileList:
-        # exam the validation of filename
-        validFilename(f.stem)
-
-        # parse .toml file into a dictionary and traverse it
-        fs = f.open()
-        tomlString = fs.read()
-        fs.close()
-        parsedData = toml.loads(tomlString)
         try:
+            # exam the validation of filename
+            validFilename(f.stem)
+
+            # parse .toml file into a dictionary and traverse it
+            fs = f.open()
+            tomlString = fs.read()
+            fs.close()
+            parsedData = toml.loads(tomlString)
+            cuisineTypeExist(f, parsedData)
             traverseDictionary(parsedData)
         except configError as e:
+            global returnVal
+            returnVal = -1
             print(e.message, 'in\n', f)
-        except Exception:
-            print('unknown error')
+        except Exception as e:
+            print(e)
 
 
     # traverse sub-folder
@@ -232,6 +249,7 @@ def main():
         validFile('../allergens')
     else:
         print('Wrong arguments')
+    return returnVal
 
 if __name__ == '__main__':
     main()
