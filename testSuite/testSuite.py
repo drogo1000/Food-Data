@@ -227,7 +227,7 @@ def main():
         validFile(sys.argv[1])
     elif len(sys.argv) == 1:
         print('Test all folders')
-        validFile('../cuisine')
+        validFile('../cuisines')
         validFile('../diets')
         validFile('../ingredients')
         validFile('../allergens')
