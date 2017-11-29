@@ -10,10 +10,10 @@ This program accept one optional argument specifying the directory. If the argum
 
 __Example:__
 
-`Bash
+```Bash
 $ python3 testSuites.py
 $ python3 testSuites.py ../allergens
-`
+```
 
 
 Dependences
@@ -46,5 +46,5 @@ Ingredients Test Cases
 Cuisines Test Cases
 -------------------
 
-* Cuisines must have a `type` field, with a value of "continent", "subregion", "country", "province" or "culture".
+* Cuisines must have a `type` field, with a value of "continent", "subregion", "country", "province", "culture" or "other".
 * If cuisines have a `cuisine` attribute, it should be of the format `cuisine.<name>.translation`, where `name` is a custom name. The translation portion falls under the same rules as the translation attribute.

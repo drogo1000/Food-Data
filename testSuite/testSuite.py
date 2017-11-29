@@ -116,7 +116,8 @@ def validCuisineType(value):
         or value == 'subregion'
         or value == 'country'
         or value == 'province'
-        or value == 'culture'):
+        or value == 'culture'
+        or value == 'other'):
             return
     raise configError('invalid cuisine type')
 
@@ -142,7 +143,7 @@ def validExDiet(value):
 # list). These strings should reference the filenames of allergens
 # that exists in allergens/
 def validExAllergen(value):
-    # get the path to diets/
+    # get the path to allergens/
     path = Path('../allergens')
     # exam the reference
     if type(value) == list:
@@ -194,13 +195,18 @@ def validDirectory(folder):
 
 # Parse a .toml file into a dictionary and exam its validation
 def validFile(folder):
+    # get global variable returnVal
+    global returnVal
+
     # exam the validation of the folder structure
     try:
         validDirectory(folder)
     except configError as e:
+        returnVal = -1
         print(e.message, 'in\n', folder)
-    except Exception:
-        print('unknown error')
+    except Exception as e:
+        returnVal = -1
+        print(e)
 
     # read .toml in the folder
     path = Path(folder)
@@ -218,12 +224,11 @@ def validFile(folder):
             cuisineTypeExist(f, parsedData)
             traverseDictionary(parsedData)
         except configError as e:
-            global returnVal
             returnVal = -1
             print(e.message, 'in\n', f)
         except Exception as e:
+            returnVal = -1
             print(e)
-
 
     # traverse sub-folder
     for child in path.iterdir():
@@ -249,7 +254,7 @@ def main():
         validFile('../allergens')
     else:
         print('Wrong arguments')
-    return returnVal
+    sys.exit(returnVal)
 
 if __name__ == '__main__':
     main()
