@@ -1,5 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/ZURASTA/Food-Data.png?label=ready&title=Ready)](https://waffle.io/ZURASTA/Food-Data?utm_source=badge)
 # Food-Data
+
+[![Stories in Ready](https://badge.waffle.io/ZURASTA/Food-Data.png?label=ready&title=Ready)](https://waffle.io/ZURASTA/Food-Data?utm_source=badge)
+[![CircleCI](https://circleci.com/gh/ZURASTA/Food-Data.svg?style=svg)](https://circleci.com/gh/ZURASTA/Food-Data)
 
 A collection of different food related data sources. Aimed at categorising different groupings (connections) of data, and localised terminology.
 
