@@ -57,8 +57,6 @@ def traverseDictionary(element):
                 validExAllergen(value)
             elif key == 'type':
                 validCuisineType(value)
-            elif key == 'cuisine':
-                validCuisine(value)
             else:
                 traverseDictionary(value)
 
@@ -117,6 +115,7 @@ def validCuisineType(value):
         or value == 'country'
         or value == 'province'
         or value == 'culture'
+        or value == 'dish'
         or value == 'other'):
             return
     raise configError('invalid cuisine type')
@@ -154,24 +153,6 @@ def validExAllergen(value):
                 raise configError('invalid exclude-allergen')
     else:
         raise configError('invalid exclude-allergen')
-
-
-# A cuisine attri should be of the format cuisine.<name>.translation,
-# where name is a custom name.
-def validCuisine(value):
-    if type(value) == dict:
-        for item in value.items():
-            key = item[0]
-            val = item[1]
-            validAttribute(key)
-            if (type(val) == dict
-            and len(val.keys()) == 1
-            and 'translation' in val.keys()):
-                validTranslation(val['translation'], 1)
-            else:
-                raise configError('invalid cusine')
-    else:
-        raise configError('invalid cuisine')
 
 
 # A cuisine must have a type attribute

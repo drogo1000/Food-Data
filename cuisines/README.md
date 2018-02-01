@@ -25,28 +25,32 @@ The TOML file itself contains attributes that should be applied to that style an
 
 The current list of attributes that are applied to the object itself:
 
-* __type__ - The category it falls under. This may be geographical (`"continent"`, `"subregion"`, `"country"`, `"province"`), cultural (`"culture"`), or some other (`"other"`).
+* __type__ - The category it falls under. This may be geographical (`"continent"`, `"subregion"`, `"country"`, `"province"`), cultural (`"culture"`), dish (`"dish"`), or some other (`"other"`).
 
 * __translation__ - The current translations for the given style.
 
 The current list of attributes that are applied to the object and child objects:
 
-* __cuisine__ - The cuisines that originate/associated with that style.
-
 
 An example of this is (australia.toml):
 
 ```toml
-[cuisine]
-  [cuisine.lamington.translation.en]
-    term = "lamington"
-
 type = "country"
 
 [translation]
   [translation.en]
     term = "australia"
     adj = "australian"
+```
+
+and (australia/lamington.toml):
+
+```toml
+type = "dish"
+
+[translation]
+  [translation.en]
+    term = "lamington"
 ```
 
 The above indicates in the country Australia and any styles inside it (in the `australia/` directory), the cuisine `lamington` is available. For more information on how translations work see: [translations.md](../translations.md).
