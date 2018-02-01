@@ -6,9 +6,3 @@ type = "country"
   [translation.en]
     term = "italy"
     adj = "italian"
-
-
-[cuisine]
-  [cuisine.pizza.translation]
-    [cuisine.pizza.translation.en]
-      term = "pizza"
