@@ -3,6 +3,10 @@ Migrations
 
 Migrations are files denoting the changes made since the last recorded migration. These migration files can be used to understand what data needs to be acted on.
 
+A property of these files are that they can be merged to further reduce the amount of operations needed to be performed. An example of this being done can be seen in the [yum](https://github.com/ZURASTA/yum/blob/132cb79ab328d2e4063d581f79fde0ff4243eb02/lib/yum/migration.ex#L65-L130) library.
+
+## Structure
+
 Each resource type (ingredients, cuisines, diets, allergens, etc.) contains migration files (`[type]/__migrations__/[timestamp].yml`) which include a list of changes that were made since the previous migration.
 
 ### Timestamp
