@@ -7,7 +7,7 @@ A collection of different food related data sources. Aimed at categorising diffe
 
 The files are currently [TOML](https://github.com/toml-lang/toml) files, which have the basic form of nested groupings of data being done using tables, while the reserved `__info__` table is for attributes about that current table (libraries parsing the data can move data into that table).
 
-### [/allergens](/diets)
+### [/allergens](/allergens)
 Contains food allergy data.
 
 
