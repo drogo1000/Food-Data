@@ -11,7 +11,7 @@ Each resource type (ingredients, cuisines, diets, allergens, etc.) contains migr
 
 ### Timestamp
 
-The file timestamp is formatted as `Y*MMDDhhmmss` or `YYYYMMDDhhmmss`.
+The file timestamp is formatted as `Y*MMDDhhmmss` or `YYYYMMDDhhmmss`, and is the current time of creation with a timezone of UTC±00:00.
 
 * `Y*` or `YYYY` is the current year (AD), e.g. `2018`.
 * `MM` is the month (`00` to `12`), e.g. `03`.
