@@ -1,6 +1,8 @@
 # https://en.wikipedia.org/wiki/Tubers
-exclude-diet = ["fruitarian"]
+exclude-diet = ["ketogenic"]
 
 [translation]
   [translation.en]
     term = "tuber"
+  [translation.es]
+    term = "tubérculo"

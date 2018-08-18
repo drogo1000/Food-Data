@@ -1,5 +1,9 @@
 # https://en.wikipedia.org/wiki/Tomato_sauce
 
+exclude-diet = ["carnivorous" , "fruitarian"]
+
 [translation]
   [translation.en]
     term = "tomato sauce"
+  [translation.es]
+    term = "salsa de tomate"

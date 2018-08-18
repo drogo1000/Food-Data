@@ -1,8 +1,10 @@
 # https://en.wikipedia.org/wiki/Vegetable#Terminology (Culinary Vegetable)
-exclude-diet = ["carnivorous", "ketogenic"]
+exclude-diet = ["carnivorous", "fruitarian"]
 
 [translation]
   [translation.en]
     term = "vegetable"
   [translation.fr]
     term = "légume"
+  [translation.es]
+    term = "vegetales"
