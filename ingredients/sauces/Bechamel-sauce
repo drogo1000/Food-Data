@@ -1,0 +1,9 @@
+# https://en.wikipedia.org/wiki/B%C3%A9chamel_sauce
+
+exclude-diet = ["carnivorous" , "fruitarian"]
+
+[translation]
+  [translation.en]
+    term = "bechamel sauce"
+  [translation.es]
+    term = "salsa bechamel"
