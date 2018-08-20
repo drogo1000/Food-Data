@@ -1,0 +1,9 @@
+# https://en.wikipedia.org/wiki/Barbecue_sauce
+
+exclude-diet = ["vegan"]--- not sure we need to check this out
+
+[translation]
+  [translation.en]
+    term = "barbecue sauce"
+  [translation.es]
+    term = "salsa barbecue"
