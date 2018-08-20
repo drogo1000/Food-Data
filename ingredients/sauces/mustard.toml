@@ -1,0 +1,9 @@
+# https://en.wikipedia.org/wiki/Mustard_(condiment)
+
+exclude-diet = ["carnivorous" , "fruitarian"]
+
+[translation]
+  [translation.en]
+    term = "mustard sauce"
+  [translation.es]
+    term = "salsa de mostaza"
