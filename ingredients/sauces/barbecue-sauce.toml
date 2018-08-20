@@ -1,6 +1,6 @@
 # https://en.wikipedia.org/wiki/Barbecue_sauce
 
-exclude-diet = ["vegan"]--- not sure we need to check this out
+exclude-diet = ["carnivorous" , "fruitarian"]
 
 [translation]
   [translation.en]
