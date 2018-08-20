@@ -1,7 +1,5 @@
 # https://en.wikipedia.org/wiki/Mustard_(condiment)
 
-exclude-diet = ["carnivorous" , "fruitarian"]
-
 [translation]
   [translation.en]
     term = "mustard sauce"
