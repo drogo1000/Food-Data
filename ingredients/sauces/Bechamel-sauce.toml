@@ -1,6 +1,6 @@
 # https://en.wikipedia.org/wiki/B%C3%A9chamel_sauce
 
-exclude-diet = ["carnivorous" , "fruitarian"]
+exclude-diet = ["carnivorous" , "vegan" , "paleolithic" , "fruitarian"]
 
 [translation]
   [translation.en]
