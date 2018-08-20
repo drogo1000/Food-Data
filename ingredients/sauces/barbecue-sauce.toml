@@ -1,7 +1,5 @@
 # https://en.wikipedia.org/wiki/Barbecue_sauce
 
-exclude-diet = ["carnivorous" , "fruitarian"]
-
 [translation]
   [translation.en]
     term = "barbecue sauce"
