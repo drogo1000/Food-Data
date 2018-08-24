@@ -1,0 +1,7 @@
+# https://en.wikipedia.org/wiki/Celery
+
+[translation]
+  [translation.en]
+    term = "celery"
+  [translation.es]
+    term = "apio"
