@@ -1,0 +1,7 @@
+# https://en.wikipedia.org/wiki/Ice_cream
+
+[translation]
+  [translation.en]
+    term = "ice cream"
+  [translation.es]
+    term = "helado"
